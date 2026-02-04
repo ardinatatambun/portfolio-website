@@ -4,7 +4,7 @@ This repository contains my **interactive personal portfolio website** showcasin
 The site is built as a **single-page HTML portfolio** and is fully compatible with **GitHub Pages**.
 
 ## 🔗 Live Preview
-https://ardinatatambun.github.io//
+[https://ardinatatambun.github.io//](https://ardinatatambun.github.io/portfolio-website/)
 
 ---
 
