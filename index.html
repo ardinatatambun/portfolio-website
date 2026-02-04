@@ -1,0 +1,825 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your Name — Data Analyst / Data Scientist</title>
+  <meta name="description" content="Interactive portfolio template for Data Analyst / Data Scientist (GitHub Pages ready)." />
+
+  <style>
+    :root{
+      --bg:#0b0f17;
+      --panel:#0f172a;
+      --card:#111827;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --border:rgba(255,255,255,.10);
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --accent:#60a5fa;
+      --accent2:#34d399;
+
+      --radius:18px;
+      --max:1100px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+
+    /* Light mode overrides */
+    [data-theme="light"]{
+      --bg:#f6f7fb;
+      --panel:#ffffff;
+      --card:#ffffff;
+      --text:#0b1220;
+      --muted:#4b5563;
+      --border:rgba(15,23,42,.12);
+      --shadow:0 10px 30px rgba(2,6,23,.10);
+      --accent:#2563eb;
+      --accent2:#059669;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 800px at 15% 10%, rgba(96,165,250,.18), transparent 55%),
+        radial-gradient(1000px 700px at 85% 20%, rgba(52,211,153,.12), transparent 55%),
+        linear-gradient(180deg, rgba(2,6,23,.92), var(--bg));
+      min-height:100vh;
+      line-height:1.6;
+    }
+    a{color:inherit}
+    .container{max-width:var(--max); margin:0 auto; padding:0 20px}
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(10px);
+      background: color-mix(in srgb, var(--panel) 70%, transparent);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:12px 0; gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; text-decoration:none;
+      font-weight:800; letter-spacing:.2px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background:linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow:0 0 0 4px rgba(96,165,250,.15);
+    }
+    .nav-links{
+      display:flex; gap:10px; flex-wrap:wrap;
+      font-size:14px; color:var(--muted);
+    }
+    .nav-links a{
+      text-decoration:none;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+    }
+    .nav-links a:hover{border-color:var(--border); color:var(--text)}
+    .controls{display:flex; gap:10px; align-items:center}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: color-mix(in srgb, var(--panel) 70%, transparent);
+      text-decoration:none;
+      font-weight:700;
+      font-size:14px;
+      cursor:pointer;
+      color:var(--text);
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn.primary{
+      border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+      background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 22%, transparent), color-mix(in srgb, var(--accent2) 14%, transparent));
+    }
+    .btn.ghost{background: transparent}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: color-mix(in srgb, var(--panel) 70%, transparent);
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .hero{padding:46px 0 18px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.6fr .9fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    .card{
+      background: color-mix(in srgb, var(--card) 85%, transparent);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .card.pad{padding:22px}
+    h1{
+      margin:10px 0 10px;
+      font-size:42px;
+      line-height:1.15;
+      letter-spacing:-.6px;
+    }
+    .subtitle{color:var(--muted); font-size:16px; margin:0 0 16px}
+    .badges{display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 14px}
+    .badge{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      color:var(--muted);
+      background: color-mix(in srgb, var(--panel) 70%, transparent);
+      font-family: var(--mono);
+      user-select:none;
+    }
+    .cta{display:flex; gap:10px; flex-wrap:wrap}
+
+    .section{padding:18px 0}
+    .section h2{margin:0 0 10px; font-size:20px; letter-spacing:-.2px}
+    .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+    .hr{height:1px; background:var(--border); margin:14px 0}
+
+    .list{display:grid; gap:10px; margin-top:10px}
+    .item{
+      padding:14px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      background: color-mix(in srgb, var(--panel) 70%, transparent);
+    }
+    .item h3{margin:0 0 4px; font-size:16px}
+    .tags{display:flex; flex-wrap:wrap; gap:7px; margin-top:10px}
+    .tag{
+      font-size:12px; color:var(--muted);
+      border:1px solid var(--border);
+      padding:4px 8px;
+      border-radius:999px;
+      font-family: var(--mono);
+      user-select:none;
+    }
+
+    /* Interactive controls */
+    .toolbar{
+      display:flex; gap:10px; flex-wrap:wrap;
+      align-items:center; justify-content:space-between;
+      margin-top:10px;
+    }
+    .search{
+      flex:1; min-width:220px;
+      display:flex; align-items:center; gap:10px;
+      border:1px solid var(--border);
+      background: color-mix(in srgb, var(--panel) 70%, transparent);
+      border-radius:999px;
+      padding:10px 14px;
+    }
+    .search input{
+      width:100%;
+      border:none; outline:none;
+      background:transparent;
+      color:var(--text);
+      font-size:14px;
+    }
+    .filter-bar{
+      display:flex; gap:8px; flex-wrap:wrap;
+      align-items:center;
+    }
+    .chip{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background: transparent;
+      color:var(--muted);
+      font-size:13px;
+      cursor:pointer;
+      user-select:none;
+    }
+    .chip[aria-pressed="true"]{
+      color:var(--text);
+      border-color: color-mix(in srgb, var(--accent) 50%, var(--border));
+      background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 18%, transparent), color-mix(in srgb, var(--accent2) 10%, transparent));
+    }
+
+    .proj-top{display:flex; align-items:flex-start; justify-content:space-between; gap:10px}
+    .proj-links{display:flex; gap:8px; flex-wrap:wrap}
+    .proj-links a{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      text-decoration:none;
+      color:var(--muted);
+    }
+    .proj-links a:hover{color:var(--text)}
+    .proj-actions{display:flex; gap:8px; flex-wrap:wrap}
+
+    
+    /* Projects: clickable grid cards (no search/filter) */
+    .project-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+      gap:14px;
+      margin-top:14px;
+    }
+    .project-card{
+      background: color-mix(in srgb, var(--panel) 70%, transparent);
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:14px;
+      box-shadow: var(--shadow);
+      transition: transform .18s ease, border-color .18s ease;
+      cursor:pointer;
+      position:relative;
+      text-decoration:none;
+      color:inherit;
+      display:block;
+    }
+    .project-card:hover{
+      transform:translateY(-3px);
+      border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+    }
+    .project-tag{
+      font-size:12px;
+      color:var(--accent);
+      margin-bottom:6px;
+      font-weight:700;
+    }
+    .project-title{
+      font-size:16px;
+      font-weight:800;
+      margin-bottom:6px;
+    }
+    .project-desc{
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:12px;
+    }
+    .project-meta{
+      font-size:12px;
+      color:var(--muted);
+      display:flex;
+      gap:6px;
+      flex-wrap:wrap;
+    }
+    .project-badge{
+      border:1px solid var(--border);
+      padding:4px 8px;
+      border-radius:999px;
+      background: color-mix(in srgb, var(--panel) 70%, transparent);
+      font-family: var(--mono);
+      user-select:none;
+      color:var(--muted);
+    }
+    .project-external{
+      position:absolute;
+      top:12px;
+      right:12px;
+      font-size:14px;
+      color:var(--muted);
+      pointer-events:none;
+    }
+    .project-card:hover .project-external{ color:var(--accent); }
+
+
+    /* Accordions */
+    details{
+      border:1px solid var(--border);
+      border-radius:14px;
+      background: color-mix(in srgb, var(--panel) 70%, transparent);
+      padding:12px 14px;
+    }
+    summary{
+      cursor:pointer;
+      font-weight:700;
+      list-style:none;
+    }
+    summary::-webkit-details-marker{display:none}
+    .summary-row{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+    .chev{opacity:.7}
+    details[open] .chev{transform:rotate(180deg)}
+    details .content{margin-top:10px; color:var(--muted); font-size:13px}
+
+    /* Modal */
+    .modal-backdrop{
+      position:fixed; inset:0; z-index:80;
+      display:none;
+      background: rgba(0,0,0,.55);
+      backdrop-filter: blur(6px);
+      padding:18px;
+    }
+    .modal-backdrop[aria-hidden="false"]{display:grid; place-items:center}
+    .modal{
+      width:min(860px, 100%);
+      border-radius: var(--radius);
+      border:1px solid var(--border);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .modal header{
+      padding:16px 18px;
+      border-bottom:1px solid var(--border);
+      display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
+    }
+    .modal h3{margin:0; font-size:18px}
+    .modal .body{padding:16px 18px; color:var(--muted)}
+    .modal .body ul{margin:8px 0 0 18px}
+    .modal .footer{
+      padding:14px 18px;
+      border-top:1px solid var(--border);
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+    }
+    .kbd{
+      font-family:var(--mono);
+      font-size:12px;
+      padding:4px 8px;
+      border:1px solid var(--border);
+      border-radius:10px;
+      color:var(--muted);
+    }
+
+    /* Toast */
+    .toast{
+      position:fixed; right:16px; bottom:16px; z-index:90;
+      display:none;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: var(--panel);
+      color:var(--text);
+      box-shadow: var(--shadow);
+      max-width:min(520px, calc(100% - 32px));
+      font-size:13px;
+    }
+    .toast.show{display:block}
+
+    footer{padding:26px 0 40px; color:var(--muted); font-size:13px}
+
+    /* Responsive */
+    @media (max-width: 880px){
+      .hero-grid{grid-template-columns:1fr}
+      h1{font-size:34px}
+      .grid-3{grid-template-columns:1fr}
+      .grid-2{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="container">
+      <div class="nav-inner">
+        <a class="brand" href="#top">
+          <span class="dot"></span>
+          <span>Ardinata J K Tambun</span>
+        </a>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+        </nav>
+
+        <div class="controls">
+          <button class="btn ghost" id="themeBtn" type="button" aria-label="Toggle theme">🌓</button>
+          <a class="btn primary" href="https://github.com/ardinatatambun" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="card pad">
+            <span class="pill">📊 Data Analyst / Data Scientist • Jakarta (or Remote)</span>
+            <h1>From raw data to clear business ready decisions.</h1>
+            <p class="subtitle">
+              I apply analytics and machine learning to solve real world business problems 
+              through clear insights and data driven decisions.
+            </p>
+
+            <div class="badges">
+              <span class="badge">Python</span>
+              <span class="badge">SQL</span>
+              <span class="badge">Pandas</span>
+              <span class="badge">scikit-learn</span>
+              <span class="badge">Power BI / Tableau</span>
+              <span class="badge">A/B Testing</span>
+              <span class="badge">Forecasting</span>
+            </div>
+
+            <div class="cta">
+              <a class="btn primary" href="#projects">View Projects</a>
+              <a class="btn" href="https://www.linkedin.com/in/ardinatatambun/" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a class="btn" href="mailto:ardinatajktambun@gmail.com">Email</a>
+              <a class="btn" href="https://drive.google.com/file/d/1vDStCqv_cYMEtO6cSWk2MAE3Av1fpWo9/view?usp=sharing">Download CV</a>
+            </div>
+
+            <div class="hr"></div>
+            <div class="small muted">
+            </div>
+          </div>
+
+          <aside class="card pad">
+            <h2>Quick Stats</h2>
+
+            <div class="list">
+              <div class="item">
+                <h3>Core focus</h3>
+                <div class="muted small">Analytics • ML </div>
+                <div class="tags">
+                  <span class="tag">Classification</span><span class="tag">Customer Insight</span><span class="tag">Churn</span><span class="tag">KPI</span>
+                </div>
+              </div>
+
+              <div class="item">
+                <h3>Preferred stack</h3>
+                <div class="muted small">Python • SQL • Git</div>
+                <div class="tags">
+                  <span class="tag">MySQL</span><span class="tag">Tableau</span><span class="tag">Jupyter</span>
+                </div>
+              </div>
+
+              <div class="item">
+                <h3>One-liner</h3>
+                <div class="muted small" id="copyLine">“I translate data into clear actions for business problems.”</div>
+                <div class="proj-actions" style="margin-top:10px">
+                </div>
+              </div>
+            </div>
+
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="grid-1">
+          <div class="card pad">
+            <h2>About</h2>
+            <p class="muted">
+              I am a data analyst with experience in transforming raw data into actionable business insights.
+              My work focuses on analytics and machine learning to support decision making across retention, growth, and operational efficiency.
+              I have pratical experience in data cleaning, exploratory analysis, predictive modeling, and dashboarding.
+              I prioritize clear communication and measurable outcomes and continuously seek to improve my skills towards Data Science and Machine Learning.
+            </p>
+            <div class="item">
+              <h3>What I do</h3>
+              <div class="muted small">
+                Build robust datasets, perform exploratory and statistical analysis, develop predictive models, 
+                and communicate insights through dashboards and concise narratives to support business decisions.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="card pad">
+          <h2>Skills</h2>
+          <div class="grid-3">
+            <div class="item">
+              <h3>Data Cleaning & Analysis</h3>
+              <div class="tags">
+                <span class="tag">Data Standarization</span><span class="tag">Data Validation</span>
+                <span class="tag">Descriptive Analysis</span><span class="tag">EDA</span>
+              </div>
+            </div>
+            <div class="item">
+              <h3>Machine Learning</h3>
+              <div class="tags">
+                <span class="tag">Classification</span><span class="tag">Regression</span><span class="tag">Clustering</span>
+                <span class="tag">Feature Eng</span><span class="tag">SHAP</span>
+              </div>
+            </div>
+            <div class="item">
+              <h3>Tools</h3>
+              <div class="tags">
+                <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Git</span>
+                <span class="tag">Tableau</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="card pad">
+          <h2>Portfolio Projects</h2>
+
+          <div class="project-grid">
+
+            <a class="project-card" href="https://github.com/ardinatatambun/daegu-apartment-price-prediction_Ardinata_Tambun" target="_blank" rel="noreferrer">
+              <div class="project-external">↗</div>
+              <div class="project-tag">Machine Learning</div>
+              <div class="project-title">Apartment Price Prediction</div>
+              <div class="project-desc">
+                Pricing model for apartments in Daegu, South Korea using various aspects such as outside and inside features to helps buyers and sellers make informed decisions.
+              </div>
+              <div class="project-meta">
+                <span class="project-badge">Python</span>
+                <span class="project-badge">XGBoost</span>
+                <span class="project-badge">Feature Imp</span>
+                <span class="project-badge">R2 0.84</span>
+              </div>
+            </a>
+
+            <a class="project-card" href="https://github.com/ardinatatambun/LRFM_Analysis_Saas_AWS_B2b_Ardinata-Tambun" target="_blank" rel="noreferrer">
+              <div class="project-external">↗</div>
+              <div class="project-tag">Data Analysis</div>
+              <div class="project-title">Customer Segmentation on SaaS Sales</div>
+              <div class="project-desc">
+                Interactive Tableau dashboard for customer segmentation, profit and customer total per segment to help identify valuable customer.
+              </div>
+              <div class="project-meta">
+                <span class="project-badge">VSC</span>
+                <span class="project-badge">Tableau</span>
+                <span class="project-badge">ETL</span>
+                <span class="project-badge">LRFM Analysis</span>
+              </div>
+            </a>
+
+            <a class="project-card" href="https://github.com/ardinatatambun/E-Commerce_Churn_Prediction_ML" target="_blank" rel="noreferrer">
+              <div class="project-external">↗</div>
+              <div class="project-tag">Machine Learning</div>
+              <div class="project-title">Churn Prediction E-Commerce</div>
+              <div class="project-desc">
+                Early churn prediction using customer behavourial patterns to help retention team take proactive measures.
+              </div>
+              <div class="project-meta">
+                <span class="project-badge">Streamlit</span>
+                <span class="project-badge">Tableau</span>
+                <span class="project-badge">XGBoost</span>
+                <span class="project-badge">SHAP</span>
+                <span class="project-badge">Business Impact & ROI</span>
+              </div>
+            </a>
+
+            <a class="project-card" href="https://github.com/ardinatatambun/NLP-Sentiment-Analysis-Amazon-Reviews" target="_blank" rel="noreferrer">
+              <div class="project-external">↗</div>
+              <div class="project-tag">Data Analysis</div>
+              <div class="project-title">Amazon Sentiment Analysis</div>
+              <div class="project-desc">
+                NLP sentiment analysis on Amazon reviews to classify customer feedback and derive insights on product perception.
+              </div>
+              <div class="project-meta">
+                <span class="project-badge">Python</span>
+                <span class="project-badge">K-Means</span>
+                <span class="project-badge">PCA</span>
+              </div>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- EXPERIENCE (Accordion) -->
+    <section id="experience" class="section">
+      <div class="container">
+        <div class="card pad">
+          <h2>Experience</h2>
+
+          <div class="list">
+            <details open>
+              <summary>
+                <div class="summary-row">
+                  <span>Independent Data Analyst</span>
+                  <span class="chev">▾</span>
+                </div>
+                <div class="muted small">May 2025 – Des 2025</div>
+              </summary>
+              <div class="content">
+                <ul>
+                  <li> Conducted end-to-end customer churn analysis on various problems (churn prediction, 
+                        apartment price, LRFM method), including business understanding, data cleaning, 
+                        exploratory data analysis (EDA), feature engineering, and model development to give insight 
+                        based on data driven strategies. </li>
+                  <li>Designed and executed a machine learning pipeline, covering data preprocessing, feature 
+                      engineering, model training, evaluation, and interpretation, to generate actionable insights for 
+                      business decision making. </li>
+                  <li>Delivered analytical insights through structured reports and visualizations, effectively 
+                      translating complex analytical findings into clear business recommendations for non technical 
+                      stakeholders. </li>
+                </ul>
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                <div class="summary-row">
+                  <span>Independent Stockist - Health and Wellness</span>
+                  <span class="chev">▾</span>
+                </div>
+                <div class="muted small">Sep 2024 – May 2025</div>
+              </summary>
+              <div class="content">
+                <ul>
+                  <li>Managed inventory and stock levels of products to ensure timely distribution to customers 
+and downline members.</li>
+                  <li>Handled cash flow and transaction records, ensuring accurate reporting of sales and 
+expenses. </li>
+                  <li>Coordinated promotions and pricing strategies in line with company guidelines to maximize 
+sales and attract new customers.</li>
+                </ul>
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                <div class="summary-row">
+                  <span>Local Tea Business Operations Associate</span>
+                  <span class="chev">▾</span>
+                </div>
+                <div class="muted small">Jun 2024 – Des 2024</div>
+              </summary>
+              <div class="content">
+                <ul>
+                  <li>Managed product pricing and promotional strategies, ensuring competitive positioning while 
+maintaining profit margins. </li>
+                  <li>Monitored and controlled daily cash flow, prepared simple financial reports, and identified 
+margins to reduce losses.  </li>
+                  <li>Implemented process improvements in store operations that streamlined workflow and 
+improved efficiency. </li>
+                  <li>Coordinated with suppliers and team members to ensure accurate stock management and 
+timely product availability.  </li>
+                  <li>Analyzed sales data to evaluate promotion effectiveness and adjusted strategies to increase 
+revenue. </li>
+                </ul>
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                <div class="summary-row">
+                  <span>Digital Content Analyst</span>
+                  <span class="chev">▾</span>
+                </div>
+                <div class="muted small">Jan 2024 – Aug 2024</div>
+              </summary>
+              <div class="content">
+                <ul>
+                  <li>Managed YouTube Studio analytics, tracking KPIs such as views, watch time, click-through 
+rate (CTR), and retention to evaluate performance.  </li>
+                  <li>Applied data insights to adjust content strategy, improving audience retention and 
+engagement.   </li>
+                  <li>Conducted A/B testing on thumbnails, genre, and titles, increasing click-through rate (CTR) 
+and viewership. </li>
+                  <li>Created performance reports in Excel/Google Sheets to monitor trends and guide data-driven 
+content decisions.  </li>
+                </ul>
+              </div>
+            </details>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <!-- Education (Accordion) -->
+    <section id="experience" class="section">
+      <div class="container">
+        <div class="card pad">
+          <h2>Education</h2>
+
+
+          <div class="list">
+            <details open>
+              <summary>
+                <div class="summary-row">
+                  <span>Purwadhika Digital Technology School</span>
+                  <span class="chev">▾</span>
+                </div>
+                <div class="muted small">2025</div>
+              </summary>
+              <div class="content">
+                Data Science & Machine Learning
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                <div class="summary-row">
+                  <span>Catholic University of Parahyangan</span>
+                  <span class="chev">▾</span>
+                </div>
+                <div class="muted small">2019 – 2023</div>
+              </summary>
+              <div class="content">
+                Civil Engineering, Grade (3.29/4.00)
+              </div>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Ardinata J K Tambun.
+    </div>
+  </footer>
+</div>
+        <button class="btn" type="button" id="closeModalBtn" aria-label="Close modal">Close</button>
+      </header>
+      <div class="body" id="modalBody"></div>
+      <div class="footer">
+        <div class="muted small">Tip: keep results numeric and reproducible.</div>
+        <div class="proj-links" id="modalLinks"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // ------------------------------
+    // Settings: theme persistence
+    // ------------------------------
+    const root = document.documentElement;
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) root.setAttribute("data-theme", savedTheme);
+
+    const themeBtn = document.getElementById("themeBtn");
+    themeBtn.addEventListener("click", () => {
+      const current = root.getAttribute("data-theme") || "dark";
+      const next = current === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+      toast(`Theme: ${next}`);
+    });
+
+    // ------------------------------
+    // Toast helper
+    // ------------------------------
+    const toastEl = document.getElementById("toast");
+    let toastTimer = null;
+    function toast(message){
+      toastEl.textContent = message;
+      toastEl.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toastEl.classList.remove("show"), 2200);
+    }
+    document.getElementById("toastBtn").addEventListener("click", () => toast("Toast OK ✅"));
+
+    // ------------------------------
+    // Copy helpers
+    // ------------------------------
+    async function copyText(text){
+      try{
+        await navigator.clipboard.writeText(text);
+        toast("Copied ✅");
+      }catch(e){
+        // fallback
+        const t = document.createElement("textarea");
+        t.value = text;
+        document.body.appendChild(t);
+        t.select();
+        document.execCommand("copy");
+        t.remove();
+        toast("Copied ✅");
+      }
+    }
+    document.getElementById("copyBtn").addEventListener("click", () => {
+      const text = document.getElementById("copyLine").textContent.trim();
+      copyText(text);
+    });
+    document.querySelectorAll("[data-copy]").forEach(btn => {
+      btn.addEventListener("click", () => copyText(btn.getAttribute("data-copy")));
+    });
+  
+    // Footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
