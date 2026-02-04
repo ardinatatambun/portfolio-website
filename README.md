@@ -1,11 +1,10 @@
-# Data Analyst / Data Scientist Portfolio
+# Personal Data Analyst / Data Scientist Portfolio
 
 This repository contains my **interactive personal portfolio website** showcasing projects, skills, and professional experience as a **Data Analyst / Data Scientist**.  
 The site is built as a **single-page HTML portfolio** and is fully compatible with **GitHub Pages**.
 
 ## 🔗 Live Preview
-👉 *(optional, add after deploy)*  
-`https://ardinatatambun.github.io/<repo-name>/`
+https://ardinatatambun.github.io//
 
 ---
 
